@@ -1,5 +1,5 @@
 {% set name = "fa2_modified" %}
-{% set version = "0.3.9" %}
+{% set version = "0.3.10" %}
 
 
 package:
@@ -8,15 +8,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f74b1cd001709785bbd89f3dad1fc0237a1a8a54b8c8ce0f8583ef4776e81299
+  sha256: 6e527bbec70454dc3f85ffeb651a0e293540f4fc83ca98fac0aeb55211322f4e
 
 build:
-  number: 2
+  number: 0
   script:
-    # Delete old generated c file so that cython can generate new ones
-    # Otherwise, it will be incompatible with python 3.9+
-    - rm -f fa2_modified/fa2util.c       # [unix]
-    - del /f /q fa2_modified\fa2util.c   # [win]
     - {{ PYTHON }} -m pip install . -vv
 
 requirements:
